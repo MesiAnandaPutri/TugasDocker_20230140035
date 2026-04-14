@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Input Data | Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 min-h-screen flex items-center justify-center p-6 font-sans">
+<div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-2xl border border-pink-100">
+    <div class="flex items-center gap-4 mb-8">
+        <div class="bg-pink-100 p-3 rounded-2xl text-pink-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-800">Form Input Mahasiswa </h3>
+    </div>
+
+    <form th:action="@{/submit}" th:object="${user}" method="post" class="space-y-6">        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">Nama Lengkap </label>
+                <input type="text" th:field="*{nama}" required placeholder="Ex: Mesi Cantik"
+                       class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">NIM </label>
+                <input type="text" th:field="*{nim}" required placeholder="Ex: 20230140035"
+                       class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-pink-400 outline-none transition-all">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-4">Jenis Kelamin </label>
+            <div class="flex gap-6">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" th:field="*{jenisKelamin}" value="Laki-laki" required class="w-4 h-4 text-pink-500 focus:ring-pink-400 border-gray-300">
+                    <span class="text-gray-600 group-hover:text-pink-600 transition-colors">Laki-laki </span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer group">
+                    <input type="radio" th:field="*{jenisKelamin}" value="Perempuan" class="w-4 h-4 text-pink-500 focus:ring-pink-400 border-gray-300">
+                    <span class="text-gray-600 group-hover:text-pink-600 transition-colors">Perempuan </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="pt-6 flex flex-col md:flex-row gap-4 items-center border-t border-gray-50">
+            <button type="submit"
+                    class="w-full md:w-auto bg-pink-500 text-white px-10 py-3 rounded-xl font-bold shadow-lg shadow-pink-100 hover:bg-pink-600 transition-all">
+                Simpan Data ✨
+            </button>
+            <a th:href="@{/home}" class="text-sm font-semibold text-gray-400 hover:text-pink-500 transition-colors">
+                ← Kembali ke Home
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
